@@ -1,0 +1,28 @@
+.content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+}
+
+div.wrapper {
+    background-color: black;
+}
+
+div.background {
+    min-height: 150px;
+    background-size: 100%;
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.item {
+    margin: 0;
+    padding: 10px!important;
+    padding-bottom: 20px;
+}
+
+
+.selected {
+    box-shadow: 0 0 30px #012115;
+}
