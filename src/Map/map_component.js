@@ -14,8 +14,8 @@ class MapComponent extends React.Component {
         super(props);
 
         this.state = {
-            center: [-94.9065, 38.9884],
-            zoom: 9,
+            center: [0, 0],
+            zoom: 0,
         }
     }
 
@@ -52,6 +52,7 @@ class MapComponent extends React.Component {
                             extent={this.extent}
                             zIndex={this.props.reverse ? 10 : 5}
                             transition={this.props.opacityOriginal / 100}
+                            zoom={this.state.zoom}
                         />)}
 
                         {this.props.displayClassified &&
@@ -68,13 +69,17 @@ class MapComponent extends React.Component {
                             extent={this.extent}
                             zIndex={this.props.reverse ? 5 : 10}
                             transition={this.props.opacityClassified / 100}
+                            zoom={this.state.zoom}
                         />)}
 
                     </Layers>
-                    <Controls>
-                        <FullScreenControl/>
-                        <SizeControl/>
-                    </Controls>
+                    {this.props.urlOriginal !== './earth.png' &&
+                    (
+                        <Controls>
+                            <FullScreenControl/>
+                            <SizeControl/>
+                        </Controls>
+                    )}
                 </Map>
             </div>
         );

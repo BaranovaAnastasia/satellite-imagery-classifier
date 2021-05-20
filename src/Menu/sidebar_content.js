@@ -9,31 +9,31 @@ const styles = {
     sidebar: {
         width: 220,
         height: "100%",
-        backgroundColor: "black"
+        backgroundColor: "#0f211f"
     },
     sidebarLink: {
         display: "block",
         padding: "16px 0px",
-        color: "#f5f5f5",
+        color: "silver",
         textDecoration: "none",
         fontSize: "18px"
     },
     divider: {
         margin: "8px 0",
         height: 0.5,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "silver",
         zIndex: 10,
     },
     titleDivider: {
         margin: "8px 0",
         marginTop: "-16px",
         height: 0.5,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "silver",
         zIndex: 10,
     },
     content: {
         padding: "16px",
-        backgroundColor: "#013220!important"
+        backgroundColor: "#0f211f!important"
     }
 };
 

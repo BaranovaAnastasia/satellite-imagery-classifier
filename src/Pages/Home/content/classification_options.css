@@ -1,5 +1,5 @@
 .select * {
-    color: black;
+    color: #0f211f;
     border: none;
 }
 
@@ -8,13 +8,13 @@
     margin: 0 !important;
     margin-bottom: 10px !important;
     width: 100%;
-    color: black;
+    color: #0f211f;
 }
 
 .select-palette {
     height: 27px;
     width: 100%;
-    color: black;
+    color: #0f211f;
 }
 
 #palette-button {
@@ -24,7 +24,7 @@
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 6px;
-    background-color: black !important;
+    background-color: #0f211f!important;
     height: 27px;
     text-align: left !important;
 }
@@ -56,7 +56,7 @@
 .kernel-info-icon {
     width: 100%;
     height: 100%;
-    color: black;
+    color: #0f211f;
     background-color: white;
 }
 
@@ -68,12 +68,12 @@
 #open-palette-button {
     padding: 0 4px 0 4px;
     color: white!important;
-    background-color: black!important;
+    background-color: #0f211f!important;
     width: 100%;
 }
 
 .color-palette-menu * {
-    color: black;
+    color: #0f211f;
 }
 
 .color-square {

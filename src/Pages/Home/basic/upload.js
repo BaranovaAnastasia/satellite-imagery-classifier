@@ -28,9 +28,14 @@ class Upload extends React.Component {
     }
 
     async uploadTiff(file) {
+        console.log(this.context)
+
         this.setState({uploadingShow: true});
 
+        console.log("requesting id")
         const id = await this.createId();
+
+        console.log("received id " + id)
 
         this.context.id = id;
 
@@ -55,12 +60,12 @@ class Upload extends React.Component {
         img.src = blobURL;
     }
 
-    load(img, url, id) {
+    load(img, url) {
         const w = img.naturalWidth;
         const h = img.naturalHeight;
         const extent = [0, 0, w, h];
-        this.props.onUploaded(url, extent, id);
-
+        this.props.onUploaded(url, extent);
+        console.log(extent)
         this.setState({uploadingShow: false});
     }
 

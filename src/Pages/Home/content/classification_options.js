@@ -36,8 +36,8 @@ class ClassificationOptions extends React.Component {
     render() {
         return (
             <>
-                <div className='container-fluid' style={{padding: "20px", borderBottom: "2px solid #013220"}}>
-                    <div id="kernel-info-row" style={{margin: "0!important", color: "black"}}>
+                <div className='container-fluid' style={{padding: "20px", borderBottom: "2px solid #0f211f"}}>
+                    <div id="kernel-info-row" style={{margin: "0!important", color: "#0f211f"}}>
                         SVM Kernel:
                     </div>
                     <Select className="select-kernel"

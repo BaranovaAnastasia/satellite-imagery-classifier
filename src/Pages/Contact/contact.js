@@ -23,39 +23,45 @@ class Contact extends React.Component {
                         top: 56
                     }}/>
                     <Jumbotron style={{
-                        backgroundImage: `url(${'./datasets/preview/utah.jpg'})`,
+                        backgroundImage: `url(${'./utah.jpg'})`,
                         backgroundSize: 'cover',
                         height: "160px"
                     }}/>
 
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 contacts">
-                                <h3 className="row" style={{color: "white", marginBottom: "30px"}}>Contact Us</h3>
-                                <div className="row">
-                                    <div className="col-5 text-center"
-                                         style={{backgroundColor: "white", marginRight: "30px", paddingTop: "30px"}}>
-                                        <WebSharp style={{fontSize: 30}}/>
-                                        <br/>
-                                        <br/>
-                                        <h5>Anastasia Baranova</h5>
-                                        <div>Web developer</div>
-                                        <a href="mailto:aabaranova_3@edu.hse.ru">aabaranova_3@edu.hse.ru</a>
-                                        <br/>
-                                        <a href="https://t.me/baranova_anastasia" target="_blank">Telegram</a>
+                    <div className="contacts">
+                        <div className="container contacts-container">
+                            <h3 className="row" style={{color: "white", marginBottom: "30px"}}>
+                                Contact Us
+                            </h3>
+                            <div className="row" style={{padding: 0}}>
+                                <div className="row" style={{width: "100%",}}>
+                                    <div className="col-6 text-center"
+                                         style={{paddingRight:"40px"}}>
+                                        <div style={{backgroundColor: "white", paddingTop: "30px", }}>
+                                            <WebSharp style={{fontSize: 30}}/>
+                                            <br/>
+                                            <br/>
+                                            <h5>Anastasia Baranova</h5>
+                                            <div>Web developer</div>
+                                            <a href="mailto:aabaranova_3@edu.hse.ru">aabaranova_3@edu.hse.ru</a>
+                                            <br/>
+                                            <a href="https://t.me/baranova_anastasia" target="_blank">Telegram</a>
+                                        </div>
                                     </div>
 
-                                    <div className="col-5 text-center"
-                                         style={{backgroundColor: "white", marginLeft: "30px", paddingTop: "30px"}}>
-                                        <Storage style={{fontSize: 30}}/>
-                                        <br/>
-                                        <br/>
+                                    <div className="col-6 text-center"
+                                         style={{paddingLeft:"40px"}}>
+                                        <div style={{backgroundColor: "white", paddingTop: "30px", }}>
+                                            <Storage style={{fontSize: 30}}/>
+                                            <br/>
+                                            <br/>
 
-                                        <h5>Dmitry Kalmykov</h5>
-                                        <div>Backend developer</div>
-                                        <a href="mailto:dekalmykov@edu.hse.ru">dekalmykov@edu.hse.ru</a>
-                                        <br/>
-                                        <a href="https://t.me/Dekalmykov" target="_blank">Telegram</a>
+                                            <h5>Dmitry Kalmykov</h5>
+                                            <div>Backend developer</div>
+                                            <a href="mailto:dekalmykov@edu.hse.ru">dekalmykov@edu.hse.ru</a>
+                                            <br/>
+                                            <a href="https://t.me/Dekalmykov" target="_blank">Telegram</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

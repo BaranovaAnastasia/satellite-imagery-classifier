@@ -1,7 +1,7 @@
 .home-col-1 {
     padding: 0;
     margin: 0;
-    border-right: 2px solid black;
+    border-right: 2px solid #0f211f;
     min-height: 100vh;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .basic-buttons {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #0f211f;
     padding-top: 20px;
     padding-bottom: 10px;
 }
@@ -29,21 +29,19 @@
     margin: 0 !important;
     margin-bottom: 10px !important;
     width: 100%;
-    background-color: black;
+    background-color: #0f211f;
     border: none;
 }
 
 .opacity-slider * {
-    color: black!important;
+    color: #0f211f!important;
 }
 .opacity-menu {
-    border-bottom: 2px solid black;
     padding-top: 15px;
-    padding-bottom: 10px;
 }
 
 .progress-bar {
-    background-color: black;
+    background-color: #0f211f;
 }
 
 .dqbMYY {
@@ -60,7 +58,7 @@
 }
 
 .swap-btn {
-    background-color: black;
+    background-color: #0f211f;
     color: white;
     border: none;
 }

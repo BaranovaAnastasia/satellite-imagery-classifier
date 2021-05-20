@@ -116,7 +116,7 @@ class Support extends React.Component {
                 <div style={{minHeight: "100vh",}}>
                     <div style={{width:"100%", height:"160px", backgroundColor:"black", opacity:0.5, position:"absolute", top:56}}/>
                     <Jumbotron style={{
-                        backgroundImage: `url(${'./datasets/preview/utah.jpg'})`,
+                        backgroundImage: `url(${'./utah.jpg'})`,
                         backgroundSize: 'cover',
                         height: "160px"
                     }}/>

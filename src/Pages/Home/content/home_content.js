@@ -12,7 +12,7 @@ class HomeContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            opacityOriginal: 100,
+            opacityOriginal: 50,
             opacityClassified: 100,
             urlOriginal: props.url,
             urlClassified: '',
@@ -55,13 +55,12 @@ class HomeContent extends React.Component {
         })
     };
 
-    async onUploadedOriginal(url, extent, id) {
+    async onUploadedOriginal(url, extent) {
         await this.props.onUploadedOriginal(url, extent);
         await this.setState({
             urlOriginal: url,
             urlClassified: '',
             extent: extent,
-            id: id,
             k: !this.state.k,
         })
     }
@@ -87,14 +86,14 @@ class HomeContent extends React.Component {
         return (
             <div className="container-fluid" style={{paddingLeft:0, paddingRight:0}}>
                 <div className="row">
-                    <div className="home-col-1 col-lg-2 col-md-3 col-sm-4" style={{backgroundColor:"white"}}>
+                    <div className="home-col-1 col-lg-2 col-md-3 col-sm-4">
                         <div className='container-fluid basic-buttons'>
-                            <Classify className='row row-button text-center'
-                                      onClassified={this.onUploadedClassified.bind(this)}
-                                      options={this.options}/>
                             <Upload className='row row-button text-center'
                                     onUploaded={this.onUploadedOriginal.bind(this)}
                                     button={true}/>
+                            <Classify className='row row-button text-center'
+                                      onClassified={this.onUploadedClassified.bind(this)}
+                                      options={this.options}/>
                             <Save className='row row-button text-center'
                                   onUploaded={this.onUploadedOriginal.bind(this)}
                                   button={true}/>

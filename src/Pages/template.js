@@ -11,7 +11,7 @@ import * as FaIcons from "react-icons/fa";
 const styles = {
     contentHeaderMenuLink: {
         textDecoration: "none",
-        color: "white",
+        color: "silver",
         padding: 8
     }
 };
@@ -91,6 +91,9 @@ class TemplatePage extends React.Component {
                 <MaterialTitlePanel title={contentHeader}>
                     {this.props.children}
                 </MaterialTitlePanel>
+                <div className="container-fluid footer">
+                    Higher School of Economics, Moscow, 2021
+                </div>
             </Sidebar>
         );
     }

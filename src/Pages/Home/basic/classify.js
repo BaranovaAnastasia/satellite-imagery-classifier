@@ -1,6 +1,6 @@
 import React from "react";
 import * as IoIcons from "react-icons/io5";
-import {Modal, ProgressBar} from "react-bootstrap";
+import {Button, Modal, ProgressBar} from "react-bootstrap";
 import {LoopCircleLoading} from 'react-loadingg';
 import Host from "../../../Host";
 
@@ -12,7 +12,12 @@ class Classify extends React.Component {
             progress: 0,
             phase: '',
             progressShow: false,
+            errorShow: false,
         }
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     getClassifyRequest() {
@@ -58,6 +63,7 @@ class Classify extends React.Component {
             let text = await blobP.text();
 
             await this.setState({progress: Number.parseFloat(text)})
+            await this.sleep(3000);
         } while (this.state.progress < 100.0)
 
         if (this.state.progress >= 100) {
@@ -73,6 +79,14 @@ class Classify extends React.Component {
         });
         resp.then(
             async (response) => {
+                if(response.status !== 200) {
+                    await this.end();
+                    await this.setState({
+                        errorShow: true,
+                    })
+                    return;
+                }
+
                 console.log("Resp received");
                 let blob = await response.blob();
                 console.log("Blob received")
@@ -100,9 +114,12 @@ class Classify extends React.Component {
 
     render() {
         return (
-            <button className={this.props.className} onClick={this.send.bind(this)} disabled={this.context.id === -1}>
-                <IoIcons.IoEarthOutline style={{margin: '4px'}}/>
-                Classify
+            <>
+                <button className={this.props.className} onClick={this.send.bind(this)}
+                        disabled={this.context.id === 1}>
+                    <IoIcons.IoEarthOutline style={{margin: '4px'}}/>
+                    Classify
+                </button>
 
                 <Modal show={this.state.progressShow}
                        animation={true}
@@ -125,10 +142,39 @@ class Classify extends React.Component {
                     <Modal.Footer>
                     </Modal.Footer>
                 </Modal>
-            </button>
+
+                <Modal show={this.state.errorShow}
+                       animation={true}
+                       onHide={()=>this.setState({errorShow: false})}
+                       dialogClassName="modal-dialog-centered">
+                    <Modal.Header>
+                        <Modal.Title>Something went wrong.</Modal.Title>
+                        <Button style={{
+                            maxWidth: "50px",
+                            backgroundColor: "white",
+                            border: "none"
+                        }}
+                                onClick={()=>this.setState({errorShow: false})}
+                                onP>
+                            <IoIcons.IoClose style={{
+                                color: "black",
+                                fontSize: "1.5em",
+                                backgroundColor: "white"
+                            }}/>
+                        </Button>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Sorry, seems like an error occurred during classification process.<br/>
+                        Please try again.
+                    </Modal.Body>
+                    <Modal.Footer>
+                    </Modal.Footer>
+                </Modal>
+            </>
         )
     }
 }
+
 Classify.contextType = Host;
 
 export default Classify;

@@ -5,7 +5,7 @@ import Static from "ol/source/ImageStatic";
 import View from "ol/View";
 import {getCenter} from "ol/extent";
 
-const ImageLayer = ({ url, projection, extent, zIndex = 0, transition = 1 }) => {
+const ImageLayer = ({ url, projection, extent, zIndex = 0, transition = 1, zoom = 0 }) => {
     const { map } = useContext(MapContext);
 
     console.log(url+ " " + transition)
@@ -28,7 +28,7 @@ const ImageLayer = ({ url, projection, extent, zIndex = 0, transition = 1 }) => 
         let view = new View({
             projection: projection,
             center: getCenter(extent),
-            zoom: 1,
+            zoom: zoom,
             maxZoom: 8,
         })
 
