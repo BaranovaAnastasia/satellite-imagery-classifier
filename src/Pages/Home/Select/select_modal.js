@@ -17,6 +17,8 @@ class SelectModal extends React.Component {
     }
 
     render() {
+
+        console.log("in select render")
         this.state.items = [];
         for (let i = 0; i < this.state.n; i++) {
             this.state.items.push(

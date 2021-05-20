@@ -4,8 +4,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 import './home_content.css'
 import Slider from "@material-ui/core/Slider";
-import AddSharp from '@material-ui/icons/AddSharp';
-import RemoveSharp from '@material-ui/icons/RemoveSharp';
 
 
 class OpacitySlider extends React.Component{

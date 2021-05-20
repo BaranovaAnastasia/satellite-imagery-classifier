@@ -1,4 +1,5 @@
 import React from "react";
+import * as BsIcons from "react-icons/bs";
 
 class LayersList extends React.Component {
     constructor(props) {
@@ -29,40 +30,47 @@ class LayersList extends React.Component {
 
     render() {
         return (
-            <div>
-                {
-                    this.state.reverse
-                        ? (
-                            <>
+            <table style={{width: "100%"}}>
+                <tbody>
+                <tr>
+                    <th style={{fontWeight: "normal"}}>
+                        {this.state.reverse
+                            ? (
                                 <div>
-                                    <input type="checkbox"
-                                           checked={this.state.original}
-                                           onChange={this.handleOriginalChange.bind(this)}/> Original
+                                    <div>
+                                        <input type="checkbox"
+                                               checked={this.state.original}
+                                               onChange={this.handleOriginalChange.bind(this)}/> Original
+                                    </div>
+                                    <div>
+                                        <input type="checkbox"
+                                               checked={this.state.classified}
+                                               onChange={this.handleClassifiedChange.bind(this)}/> Classified
+                                    </div>
                                 </div>
+                            )
+                            : (
                                 <div>
-                                    <input type="checkbox"
-                                           checked={this.state.classified}
-                                           onChange={this.handleClassifiedChange.bind(this)}/> Classified
+                                    <div>
+                                        <input type="checkbox"
+                                               checked={this.state.classified}
+                                               onChange={this.handleClassifiedChange.bind(this)}/> Classified
+                                    </div>
+                                    <div>
+                                        <input type="checkbox"
+                                               checked={this.state.original}
+                                               onChange={this.handleOriginalChange.bind(this)}/> Original
+                                    </div>
                                 </div>
-                            </>
-                        )
-                        : (
-                            <>
-                                <div>
-                                    <input type="checkbox"
-                                           checked={this.state.classified}
-                                           onChange={this.handleClassifiedChange.bind(this)}/> Classified
-                                </div>
-                                <div>
-                                    <input type="checkbox"
-                                           checked={this.state.original}
-                                           onChange={this.handleOriginalChange.bind(this)}/> Original
-                                </div>
-                            </>
-                        )
-                }
-                <button onClick={this.handleReverse.bind(this)}>swap</button>
-            </div>
+                            )
+                        }
+                    </th>
+                    <th style={{width: "15%"}}>
+                        <button className="swap-btn" onClick={this.handleReverse.bind(this)}>Swap</button>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
         )
     }
 

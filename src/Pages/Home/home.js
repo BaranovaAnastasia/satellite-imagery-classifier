@@ -72,7 +72,7 @@ class Home extends React.Component {
                     k={this.state.k}
                 >
                     <HomeContent onUploadedOriginal={this.onUploaded.bind(this)}
-                        url={this.state.url} extent={this.state.extent} k={this.state.k}/>
+                                 url={this.state.url} extent={this.state.extent} k={this.state.k}/>
                 </TemplatePage>
                 <Modal show={this.state.modalShow}
                        onHide={this.handleClose}

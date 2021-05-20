@@ -1,12 +1,12 @@
 import React from 'react';
-import * as IoIcons from "react-icons/io5";
 import MapComponent from "../../../Map/map_component";
 import ClassificationOptions from "./classification_options";
 import './home_content.css';
-import Upload from "../upload/upload";
-import Classify from "../classify/classify";
+import Upload from "../basic/upload";
+import Classify from "../basic/classify";
 import OpacitySlider from "./OpacitySlider";
 import LayersList from "./layers_list";
+import Save from "../basic/save";
 
 class HomeContent extends React.Component {
     constructor(props) {
@@ -22,16 +22,17 @@ class HomeContent extends React.Component {
             displayClassified: true,
             reverse: false,
 
+            k: true,
+        }
+
+        this.options = {
+            kernel: 'linear',
             water: "#1357ae",
             field: "#808000",
             tree: "#183215",
             ground: "#800000",
             infrastructure: "#808080",
             vegetation: "#008000",
-
-            id: -1,
-
-            k: true,
         }
     }
 
@@ -58,6 +59,7 @@ class HomeContent extends React.Component {
         await this.props.onUploadedOriginal(url, extent);
         await this.setState({
             urlOriginal: url,
+            urlClassified: '',
             extent: extent,
             id: id,
             k: !this.state.k,
@@ -73,46 +75,34 @@ class HomeContent extends React.Component {
     }
 
     handlePaletteChange = async (option) => {
-        option.k = !this.state.k
-        await this.setState(option)
+        Object.assign(this.options, option);
     };
+    handleKernelChange = async (kernel) => {
+        Object.assign(this.options, {kernel: kernel});
+    };
+
 
     render() {
         console.log("rendering content...");
-        console.log(this.props.url);
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" style={{paddingLeft:0, paddingRight:0}}>
                 <div className="row">
-                    <div className="home-col-1 col-lg-2 col-md-3 col-sm-4">
+                    <div className="home-col-1 col-lg-2 col-md-3 col-sm-4" style={{backgroundColor:"white"}}>
                         <div className='container-fluid basic-buttons'>
                             <Classify className='row row-button text-center'
                                       onClassified={this.onUploadedClassified.bind(this)}
-                                      kernel="rbf"
-                                      water={this.state.water}
-                                      field={this.state.field}
-                                      tree={this.state.tree}
-                                      ground={this.state.ground}
-                                      infrastructure={this.state.infrastructure}
-                                      vegetation={this.state.vegetation}
-                                      host={'http://192.168.222.36:8080'}
-                                      id={this.state.id}/>
+                                      options={this.options}/>
                             <Upload className='row row-button text-center'
                                     onUploaded={this.onUploadedOriginal.bind(this)}
-                                    button={true}
-                                    item={{
-                                        id: 'upload',
-                                        title: 'Upload',
-                                        path: '/',
-                                        icon: <IoIcons.IoCloudUploadOutline style={{margin: '4px'}}/>,
-                                    }}/>
-                            <button className='row row-button text-center'>
-                                <IoIcons.IoSaveOutline style={{margin: '4px'}}/>
-                                Save
-                            </button>
+                                    button={true}/>
+                            <Save className='row row-button text-center'
+                                  onUploaded={this.onUploadedOriginal.bind(this)}
+                                  button={true}/>
                         </div>
 
                         <ClassificationOptions
-                            onPaletteChange={this.handlePaletteChange}/>
+                            onPaletteChange={this.handlePaletteChange}
+                            onKernelChange={this.handleKernelChange}/>
 
                         <div className="container-fluid opacity-menu">
                             Source opacity:
@@ -121,7 +111,7 @@ class HomeContent extends React.Component {
                             <OpacitySlider onChange={this.handleOpacityClassifiedChange}/>
                         </div>
 
-                        <div className="container-fluid opacity-menu">
+                        <div className="container-fluid" style={{paddingTop:"15px"}}>
                             <LayersList
                                 onOriginalChanged={(display) =>
                                     this.setState({

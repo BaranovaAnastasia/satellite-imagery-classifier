@@ -39,7 +39,7 @@ class MapComponent extends React.Component {
             <div>
                 <Map center={fromLonLat(this.state.center)} zoom={this.state.zoom}>
                     <Layers>
-                        {this.props.displayOriginal && !this.props.reverse &&
+                        {this.props.displayOriginal &&
                         (<ImageLayer
                             url={this.props.urlOriginal}
                             projection={
@@ -50,11 +50,11 @@ class MapComponent extends React.Component {
                                 })
                             }
                             extent={this.extent}
-                            zIndex={5}
+                            zIndex={this.props.reverse ? 10 : 5}
                             transition={this.props.opacityOriginal / 100}
                         />)}
 
-                        {this.props.displayClassified && !this.props.reverse &&
+                        {this.props.displayClassified &&
                         this.props.urlClassified !== '' && this.props.urlClassified !== undefined &&
                         (<ImageLayer
                             url={this.props.urlClassified}
@@ -66,42 +66,9 @@ class MapComponent extends React.Component {
                                 })
                             }
                             extent={this.extent}
-                            zIndex={10}
+                            zIndex={this.props.reverse ? 5 : 10}
                             transition={this.props.opacityClassified / 100}
                         />)}
-
-
-                        {this.props.displayOriginal && this.props.reverse &&
-                        (<ImageLayer
-                            url={this.props.urlOriginal}
-                            projection={
-                                new Projection({
-                                    code: 'xkcd-image',
-                                    units: 'pixels',
-                                    extent: this.extent,
-                                })
-                            }
-                            extent={this.extent}
-                            zIndex={10}
-                            transition={this.props.opacityOriginal / 100}
-                        />)}
-
-                        {this.props.displayClassified && this.props.reverse &&
-                        this.props.urlClassified !== '' && this.props.urlClassified !== undefined &&
-                        (<ImageLayer
-                            url={this.props.urlClassified}
-                            projection={
-                                new Projection({
-                                    code: 'xkcd-image',
-                                    units: 'pixels',
-                                    extent: this.extent,
-                                })
-                            }
-                            extent={this.extent}
-                            zIndex={5}
-                            transition={this.props.opacityClassified / 100}
-                        />)}
-
 
                     </Layers>
                     <Controls>

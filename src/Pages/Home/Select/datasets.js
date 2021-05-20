@@ -2,39 +2,33 @@ import React from "react";
 
 export const Datasets = [
     {
-        id: "chicago",
-        text: (<>North Chicago, Illinois.<br/>Lake Michigan.</>),
-        preview: "./datasets/preview/chicago.jpg",
-        url: "./datasets/preview/chicago.jpg",
-    },
-    {
-        id: "utah",
-        text: (<>Saratoga Springs, Utah.<br/>Lake Utah.</>),
-        preview: "./datasets/preview/utah.jpg",
-        url: "./datasets/preview/utah.jpg",
+        id: "aitkin",
+        text: (<>Aitkin, Minnesota.<br/>Thirty-One Lake.</>),
+        preview: "./datasets/preview/aitkin.png",
     },
     {
         id: "san_francisco",
         text: (<>San Francisco, California.<br/>San Francisco Bay.</>),
-        preview: "./datasets/preview/san_francisco.jpg",
-        url: "./datasets/preview/san_francisco.jpg",
+        preview: "./datasets/preview/san_francisco.png",
     },
     {
-        id: "grand_canyon",
-        text: (<>Grand Canyon, Arizona.<br/>Colorado River.</>),
-        preview: "./datasets/preview/grand_canyon.jpg",
-        url: "./datasets/preview/grand_canyon.jpg",
+        id: "fish_haven",
+        text: (<>Fish Haven, Idaho.<br/>Bear Lake.</>),
+        preview: "./datasets/preview/fish_haven.png",
     },
     {
         id: "gilbertville",
-        text: (<>Gilbertville, Iowa.<br/>Cedar River.</>),
-        preview: "./datasets/preview/gilbertville.jpg",
-        url: "./datasets/preview/gilbertville.jpg",
+        text: (<>Gilbertville, Iowa.</>),
+        preview: "./datasets/preview/gilbertville.png",
     },
     {
-        id: "la_push",
-        text: (<>La Push, Washington.<br/>Quillayute River .</>),
-        preview: "./datasets/preview/la_push.jpg",
-        url: "./datasets/preview/la_push.jpg",
+        id: "saratoga_springs",
+        text: (<>Saratoga Springs, Utah.</>),
+        preview: "./datasets/preview/saratoga_springs.png",
+    },
+    {
+        id: "britton",
+        text: (<>Britton, South Dakota.</>),
+        preview: "./datasets/preview/britton.png",
     }
 ]
