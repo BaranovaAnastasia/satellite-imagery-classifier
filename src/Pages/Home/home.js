@@ -3,7 +3,7 @@ import React from "react";
 import TemplatePage from "../template";
 import {HomeLayersSidebarData, OtherSidebarData} from "../../Menu/sidebar_data";
 
-import SelectModal from "./Select/select_modal";
+import SelectModal from "./select/select_modal";
 import HomeContent from "./content/home_content";
 
 class Home extends React.Component {

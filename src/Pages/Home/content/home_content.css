@@ -22,7 +22,7 @@
 }
 
 .basic-buttons * {
-    color: #f5f5f5;
+    color: silver;
 }
 
 .row-button {
@@ -59,6 +59,6 @@
 
 .swap-btn {
     background-color: #0f211f;
-    color: white;
+    color: silver;
     border: none;
 }

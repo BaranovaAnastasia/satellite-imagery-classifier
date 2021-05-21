@@ -19,6 +19,7 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
+        return;
         await fetch(this.host + "/connect", {
             method: "GET",
         }).then((response) => {
@@ -44,10 +45,10 @@ class App extends React.Component {
                             {!this.state.connected && <Redirect to="/connection-not-established"/>}
                         </Route>
                         <Route path='/home' component={Home}>
-                            {(!this.state.connected || !this.state.ready) && <Redirect to="/connection-not-established"/>}
+                            {!this.state.connected && <Redirect to="/connection-not-established"/>}
                         </Route>
                         <Route path='/connection-not-established' component={NotConnected}>
-                            {this.state.connected && this.state.ready && <Redirect to="/home"/>}
+                            {this.state.connected && <Redirect to="/home"/>}
                         </Route>
                     </Host.Provider>
                 </Switch>

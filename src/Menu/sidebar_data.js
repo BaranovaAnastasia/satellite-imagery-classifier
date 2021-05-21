@@ -12,7 +12,7 @@ export const HomeLayersSidebarData = [
     },
     {
         id: 'select',
-        title: 'Select dataset',
+        title: 'select dataset',
         icon: <BiIcons.BiSelectMultiple/>,
         cName: 'nav-text'
     },

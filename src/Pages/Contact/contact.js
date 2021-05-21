@@ -36,7 +36,7 @@ class Contact extends React.Component {
                             <div className="row" style={{padding: 0}}>
                                 <div className="row" style={{width: "100%",}}>
                                     <div className="col-6 text-center"
-                                         style={{paddingRight:"40px"}}>
+                                         style={{paddingRight:"40px", paddingLeft:0}}>
                                         <div style={{backgroundColor: "white", paddingTop: "30px", }}>
                                             <WebSharp style={{fontSize: 30}}/>
                                             <br/>
@@ -50,7 +50,7 @@ class Contact extends React.Component {
                                     </div>
 
                                     <div className="col-6 text-center"
-                                         style={{paddingLeft:"40px"}}>
+                                         style={{paddingLeft:"40px", paddingRight:0}}>
                                         <div style={{backgroundColor: "white", paddingTop: "30px", }}>
                                             <Storage style={{fontSize: 30}}/>
                                             <br/>
