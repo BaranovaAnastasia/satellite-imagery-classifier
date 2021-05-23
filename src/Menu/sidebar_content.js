@@ -59,7 +59,6 @@ class SidebarContent extends React.Component {
     }
 
     fillLinks() {
-        console.log(this.props.layers)
         for (let ind = 0; ind < this.props.layers.length; ind++) {
             const item = this.props.layers[ind];
             this.linksLayers.push(

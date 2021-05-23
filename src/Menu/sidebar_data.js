@@ -6,19 +6,19 @@ import * as IoIcons from 'react-icons/io5';
 export const HomeLayersSidebarData = [
     {
         id: 'upload',
-        title: 'Upload a layer',
+        title: 'Upload image',
         icon: <IoIcons.IoCloudUploadOutline/>,
         cName: 'nav-text'
     },
     {
         id: 'select',
-        title: 'select dataset',
+        title: 'Select image',
         icon: <BiIcons.BiSelectMultiple/>,
         cName: 'nav-text'
     },
     {
         id: 'download',
-        title: 'Download layers',
+        title: 'Download',
         icon: <BiIcons.BiCloudDownload/>,
         cName: 'nav-text'
     }
@@ -27,10 +27,10 @@ export const HomeLayersSidebarData = [
 
 export const OnlyHomeSidebarData = [
     {
-        id: 'home',
-        title: 'Home',
-        path: '/home',
-        icon: <BiIcons.BiHome/>,
+        id: 'classifier',
+        title: 'Classifier',
+        path: '/classifier',
+        icon: <IoIcons.IoEarthOutline/>,
         cName: 'nav-text'
     }
 ];

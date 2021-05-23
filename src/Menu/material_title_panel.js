@@ -8,10 +8,11 @@ const styles = {
         fontWeight: 300,
     },
     header: {
-        backgroundColor: "#0f211f",
+        background: "none",
         color: "silver",
         padding: "10px",
-        fontSize: "1.5em"
+        fontSize: "1.5em",
+        height:"56px"
     }
 };
 
@@ -19,10 +20,13 @@ const MaterialTitlePanel = props => {
     const rootStyle = props.style
         ? {...styles.root, ...props.style}
         : styles.root;
+    const headerStyle = props.colorHeader
+        ? {...styles.header, ...{backgroundColor: "#0f211f"}}
+        : styles.header;
 
     return (
         <div style={rootStyle}>
-            <div style={styles.header}>{props.title}</div>
+            <div style={headerStyle}>{props.title}</div>
             {props.children}
         </div>
     );

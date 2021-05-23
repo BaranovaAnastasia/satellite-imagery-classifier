@@ -42,6 +42,7 @@ class Upload extends React.Component {
         let data = new FormData()
         data.append('file', file, file.name)
 
+        console.log(this.context.host + "/upload/" + this.context.id)
         let resp = await fetch(this.context.host + "/upload/" + this.context.id, {
             method: "POST",
             body: data,

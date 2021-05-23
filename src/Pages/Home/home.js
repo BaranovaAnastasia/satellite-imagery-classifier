@@ -3,7 +3,6 @@ import React from "react";
 import TemplatePage from "../template";
 import {HomeLayersSidebarData, OtherSidebarData} from "../../Menu/sidebar_data";
 
-import SelectModal from "./select/select_modal";
 import HomeContent from "./content/home_content";
 
 class Home extends React.Component {
@@ -12,20 +11,24 @@ class Home extends React.Component {
 
         this.state = {
             modalShow: false,
-            url: './earth.png',
+            url: './earth.jpg',
 
             k: false,
         }
+
+        this.content = React.createRef();
     }
 
     handleClose = async () => {
         await this.setState({
             modalShow: false,
+            k: !this.state.k,
         });
     };
 
     handleShow = async () => await this.setState({
         modalShow: true,
+        k: !this.state.k,
     });
 
     async onUploaded(url, extent) {
@@ -34,14 +37,13 @@ class Home extends React.Component {
             url: url,
             extent: extent,
 
-            k: !this.state.k
+            k: !this.state.k,
         });
+        await this.content.current.onUploadedOriginal(url, extent, false)
     }
 
 
     render() {
-        console.log("rendering...");
-        console.log(this.state.url);
         return (
             <>
                 <TemplatePage
@@ -50,13 +52,16 @@ class Home extends React.Component {
                     showSelect={this.handleShow}
                     onUploaded={this.onUploaded.bind(this)}
                     k={this.state.k}
+                    colorHeader={true}
                 >
-                    <HomeContent onUploadedOriginal={this.onUploaded.bind(this)}
-                                 url={this.state.url} extent={this.state.extent} k={this.state.k}/>
+                    <HomeContent ref={this.content}
+                                 onUploadedOriginal={this.onUploaded.bind(this)}
+                                 url={this.state.url} extent={this.state.extent}
+                                 modalShow={this.state.modalShow}
+                                 handleClose={this.handleClose.bind(this)}
+                                 k={this.state.k}
+                                 update={this.state.update}/>
                 </TemplatePage>
-                <SelectModal onSelected={this.onUploaded.bind(this)}
-                             onHide={this.handleClose.bind(this)}
-                             show={this.state.modalShow}/>
             </>
         );
     }

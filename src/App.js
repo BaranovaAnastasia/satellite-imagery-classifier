@@ -7,11 +7,12 @@ import Contact from "./Pages/Contact/contact";
 import Support from "./Pages/Support/support";
 import Host from './Host';
 import NotConnected from "./Pages/NotConnected/not_connected";
+import Start from "./Pages/start/start";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.host = 'https://ec57f358e67d.ngrok.io';
+        this.host = 'http://2653d4393f7b.ngrok.io';
         this.state = {
             connected: true,
             ready: false,
@@ -19,15 +20,24 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
-        return;
-        await fetch(this.host + "/connect", {
-            method: "GET",
-        }).then((response) => {
-            this.setState({
-                connected: response.status === 200,
+        try {
+            console.log("trying to connect")
+            await fetch(this.host + "/connect", {
+                method: "GET",
+            }).then(async (response) => {
+                await this.setState({
+                    connected: response.status === 200,
+                    ready: true,
+                })
+                console.log("connection: " + response.status)
+            });
+        } catch {
+            await this.setState({
+                connected: false,
                 ready: true,
             })
-        });
+            console.log("no connection")
+        }
     }
 
     render() {
@@ -44,11 +54,12 @@ class App extends React.Component {
                         <Route path='/support' component={Support}>
                             {!this.state.connected && <Redirect to="/connection-not-established"/>}
                         </Route>
-                        <Route path='/home' component={Home}>
-                            {!this.state.connected && <Redirect to="/connection-not-established"/>}
-                        </Route>
+                        <Route path='/home' component={Start}/>
                         <Route path='/connection-not-established' component={NotConnected}>
-                            {this.state.connected && <Redirect to="/home"/>}
+                            {this.state.connected && this.state.ready && <Redirect to="/home"/>}
+                        </Route>
+                        <Route path="/classifier" component={Home}>
+                            {!this.state.connected && <Redirect to="/connection-not-established"/>}
                         </Route>
                     </Host.Provider>
                 </Switch>

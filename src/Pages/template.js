@@ -65,9 +65,14 @@ class TemplatePage extends React.Component {
                     <FaIcons.FaBars/>
                 </a>
             )}
-                <a href={"/"} className="navbar-brand text-uppercase">
-                Satellite Imagery Classifier
-            </a>
+                {
+                    (this.props.displayHeader === undefined || this.props.displayHeader)
+                    && (
+                        <a href={"/"} className="navbar-brand text-uppercase">
+                            Satellite Imagery Classifier
+                        </a>
+                    )
+                }
             </span>
         );
 
@@ -88,7 +93,7 @@ class TemplatePage extends React.Component {
 
         return (
             <Sidebar {...sidebarProps}>
-                <MaterialTitlePanel title={contentHeader}>
+                <MaterialTitlePanel title={contentHeader} colorHeader={this.props.colorHeader}>
                     {this.props.children}
                 </MaterialTitlePanel>
                 <div className="container-fluid footer">

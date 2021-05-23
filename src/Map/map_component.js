@@ -14,8 +14,9 @@ class MapComponent extends React.Component {
         super(props);
 
         this.state = {
-            center: [0, 0],
-            zoom: 0,
+            center: [-10, 10],
+            zoom: 1,
+            url: './earth.jpg'
         }
     }
 
@@ -23,9 +24,10 @@ class MapComponent extends React.Component {
         console.log("o: " + this.props.urlOriginal)
         console.log("c: " + this.props.urlClassified)
 
-        if (this.props.urlOriginal === '' || this.props.urlOriginal === undefined) {
-            return (<div>No map</div>)
-        }
+        let def = this.props.urlOriginal === ''
+            || this.props.urlOriginal === undefined
+            || this.props.urlOriginal === './earth.jpg';
+        console.log(def)
 
         this.extent = this.props.extent;
 
@@ -35,13 +37,15 @@ class MapComponent extends React.Component {
             this.extent = [0, 0, img.naturalWidth, img.naturalWidth];
         }
 
+        console.log(def ? this.state.url : this.props.urlOriginal)
+
         return (
             <div>
                 <Map center={fromLonLat(this.state.center)} zoom={this.state.zoom}>
                     <Layers>
                         {this.props.displayOriginal &&
                         (<ImageLayer
-                            url={this.props.urlOriginal}
+                            url={def ? this.state.url : this.props.urlOriginal}
                             projection={
                                 new Projection({
                                     code: 'xkcd-image',
@@ -51,8 +55,8 @@ class MapComponent extends React.Component {
                             }
                             extent={this.extent}
                             zIndex={this.props.reverse ? 10 : 5}
-                            transition={this.props.opacityOriginal / 100}
-                            zoom={this.state.zoom}
+                            transition={def ? 0.5 : this.props.opacityOriginal / 100}
+                            zoom={def ? 0 : this.props.zoom ? this.props.zoom : this.state.zoom}
                         />)}
 
                         {this.props.displayClassified &&
@@ -73,13 +77,10 @@ class MapComponent extends React.Component {
                         />)}
 
                     </Layers>
-                    {this.props.urlOriginal !== './earth.png' &&
-                    (
-                        <Controls>
-                            <FullScreenControl/>
-                            <SizeControl/>
-                        </Controls>
-                    )}
+                    <Controls>
+                        <FullScreenControl/>
+                        <SizeControl/>
+                    </Controls>
                 </Map>
             </div>
         );

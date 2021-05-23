@@ -5,10 +5,11 @@ import {OnlyHomeSidebarData, OtherSidebarData} from "../../Menu/sidebar_data";
 
 import './support.css';
 import Modal from "react-bootstrap/Modal";
-import {Button, Jumbotron} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import * as IoIcons from "react-icons/io5";
 import {LoopCircleLoading} from "react-loadingg";
 import Host from "../../Host";
+import MyJumbotron from "../jumbotron";
 
 class Support extends React.Component {
     constructor(props) {
@@ -114,16 +115,14 @@ class Support extends React.Component {
                 layers={OnlyHomeSidebarData}
                 pages={OtherSidebarData.slice(0, 2)}>
                 <div style={{minHeight: "100vh",}}>
-                    <div style={{width:"100%", height:"160px", backgroundColor:"black", opacity:0.5, position:"absolute", top:56}}/>
-                    <Jumbotron style={{
-                        backgroundImage: `url(${'./utah.jpg'})`,
-                        backgroundSize: 'cover',
-                        height: "160px"
-                    }}/>
-                    <div className="container" style={{position:"absolute", top:"50px", left:"2em"}}>
-                        <h3 className="row" style={{paddingLeft: "15px", paddingTop: "15px", color:"white"}}>Support</h3>
+                    <MyJumbotron height="230px"/>
+                    <div className="container" style={{position:"absolute", top:"50px", left:"5em"}}>
+                        <h2 className="row"
+                            style={{paddingLeft: "15px", paddingTop: "15px", color:"#F0F0F0", opacity: 0.8}}>
+                            Support
+                        </h2>
                         <div className="row">
-                            <div className="col-lg-5 col-md-8" style={{color: "white"}}>
+                            <div className="col-lg-5 col-md-8" style={{color: "#F0F0F0", opacity: 0.8}}>
                                 If you faced a problem with our app, please inform us using the form below.
                             </div>
                         </div>
@@ -180,7 +179,7 @@ class Support extends React.Component {
                                 <Modal.Title>Support</Modal.Title>
                                 <Button style={{
                                     maxWidth: "50px",
-                                    backgroundColor: "white",
+                                    backgroundColor: "silver",
                                     border: "none"
                                 }}
                                         onClick={this.handleClose}
@@ -188,7 +187,7 @@ class Support extends React.Component {
                                     <IoIcons.IoClose style={{
                                         color: "black",
                                         fontSize: "1.5em",
-                                        backgroundColor: "white"
+                                        backgroundColor: "silver"
                                     }}/>
                                 </Button>
                             </Modal.Header>

@@ -21,6 +21,7 @@ class Classify extends React.Component {
     }
 
     getClassifyRequest() {
+        console.log("creating classify request")
         let res = this.context.host + '/classify/' + this.context.id +
             '?kernel=' + this.props.options.kernel +
             '&water=' + this.props.options.water +
@@ -51,6 +52,7 @@ class Classify extends React.Component {
         await this.setState({
             phase: 'Traversing the image...',
             progressShow: false,
+            progress: 0.0,
         })
     }
 
@@ -74,16 +76,19 @@ class Classify extends React.Component {
     async send() {
         await this.prepare();
 
+        console.log("requesting classification")
         let resp = fetch(this.getClassifyRequest(), {
             method: "GET",
         });
         resp.then(
             async (response) => {
+                console.log("classification done");
                 if(response.status !== 200) {
                     await this.end();
                     await this.setState({
                         errorShow: true,
                     })
+                    console.log("error: " + response.status);
                     return;
                 }
 
@@ -116,7 +121,7 @@ class Classify extends React.Component {
         return (
             <>
                 <button className={this.props.className} onClick={this.send.bind(this)}
-                        disabled={this.context.id === 1}>
+                        disabled={this.context.id === -1}>
                     <IoIcons.IoEarthOutline style={{margin: '4px'}}/>
                     Classify
                 </button>

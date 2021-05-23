@@ -38,7 +38,7 @@ class SelectModal extends React.Component {
         this.context.id = id;
 
         let data = new FormData()
-        data.append('file', file, Datasets[i].id)
+        data.append('file', file, file.name)
 
         let resp = await fetch(this.context.host + "/upload/" + this.context.id, {
             method: "POST",
@@ -62,7 +62,7 @@ class SelectModal extends React.Component {
         const w = img.naturalWidth;
         const h = img.naturalHeight;
         const extent = [0, 0, w, h];
-        this.props.onSelected(url, extent, id);
+        this.props.onSelected(url, extent, this);
         console.log(extent)
 
         this.setState({uploadingShow: false});
@@ -75,6 +75,8 @@ class SelectModal extends React.Component {
     };
 
     async handleSelected(i) {
+        console.log("SELECTEDDDD " + i)
+        console.log(this.props.onSelected)
         this.setState({uploadingShow: true});
         this.props.onHide();
 
@@ -90,8 +92,6 @@ class SelectModal extends React.Component {
     }
 
     render() {
-
-        console.log("in select render")
         this.state.items = [];
         for (let i = 0; i < this.state.n; i++) {
             this.state.items.push(
@@ -109,7 +109,7 @@ class SelectModal extends React.Component {
         return (
             <div>
                 <Modal show={this.props.show}
-                       onHide={this.handleClose}
+                       onHide={this.props.onHide}
                        animation={true}
                        dialogClassName="modal-dialog-centered modal-lg">
                     <Modal.Header>
@@ -119,7 +119,7 @@ class SelectModal extends React.Component {
                             backgroundColor: "white",
                             border: "none"
                         }}
-                                onClick={this.handleClose}
+                                onClick={this.props.onHide}
                                 onP>
                             <IoIcons.IoClose style={{
                                 color: "black",

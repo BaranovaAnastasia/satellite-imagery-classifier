@@ -7,12 +7,14 @@ import Classify from "../basic/classify";
 import OpacitySlider from "./OpacitySlider";
 import LayersList from "./layers_list";
 import Save from "../basic/save";
+import TemplatePage from "../../template";
+import SelectModal from "../select/select_modal";
 
 class HomeContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            opacityOriginal: 50,
+            opacityOriginal: 100,
             opacityClassified: 100,
             urlOriginal: props.url,
             urlClassified: '',
@@ -55,8 +57,10 @@ class HomeContent extends React.Component {
         })
     };
 
-    async onUploadedOriginal(url, extent) {
-        await this.props.onUploadedOriginal(url, extent);
+    onUploadedOriginal = async (url, extent, callHome) => {
+        if (callHome !== undefined && callHome) {
+            await this.props.onUploadedOriginal(url, extent);
+        }
         await this.setState({
             urlOriginal: url,
             urlClassified: '',
@@ -80,11 +84,16 @@ class HomeContent extends React.Component {
         Object.assign(this.options, {kernel: kernel});
     };
 
+    handleClose = async () => {
+        this.props.handleClose()
+        await this.setState({
+            k: !this.state.k,
+        });
+    };
 
     render() {
-        console.log("rendering content...");
         return (
-            <div className="container-fluid" style={{paddingLeft:0, paddingRight:0}}>
+            <div className="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
                 <div className="row">
                     <div className="home-col-1 col-lg-2 col-md-3 col-sm-4">
                         <div className='container-fluid basic-buttons'>
@@ -110,7 +119,7 @@ class HomeContent extends React.Component {
                             <OpacitySlider onChange={this.handleOpacityClassifiedChange}/>
                         </div>
 
-                        <div className="container-fluid" style={{paddingTop:"15px"}}>
+                        <div className="container-fluid" style={{paddingTop: "15px"}}>
                             <LayersList
                                 onOriginalChanged={(display) =>
                                     this.setState({
@@ -129,7 +138,7 @@ class HomeContent extends React.Component {
 
                     <div className="map-content col-lg-10 col-md-9 col-sm-8" key={this.state.k}>
                         <MapComponent
-                            urlOriginal={this.props.url}
+                            urlOriginal={this.state.urlOriginal}
                             urlClassified={this.state.urlClassified}
                             extent={this.state.extent}
                             opacityOriginal={this.state.opacityOriginal}
@@ -137,9 +146,15 @@ class HomeContent extends React.Component {
                             displayOriginal={this.state.displayOriginal}
                             displayClassified={this.state.displayClassified}
                             reverse={this.state.reverse}
-                            k={this.state.k}/>
+                            zoom={this.state.zoom}
+                            k={this.state.k}
+                            update={this.props.update}/>
                     </div>
                 </div>
+
+                <SelectModal onSelected={this.onUploadedOriginal.bind(this)}
+                             onHide={this.handleClose}
+                             show={this.props.modalShow}/>
             </div>
         )
     }
