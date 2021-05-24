@@ -114,11 +114,10 @@ class Support extends React.Component {
             <TemplatePage
                 layers={OnlyHomeSidebarData}
                 pages={OtherSidebarData.slice(0, 2)}>
-                <div style={{minHeight: "100vh",}}>
-                    <MyJumbotron height="230px"/>
-                    <div className="container" style={{position:"absolute", top:"50px", left:"5em"}}>
+                <MyJumbotron height="100vh">
+                    <div className="container">
                         <h2 className="row"
-                            style={{paddingLeft: "15px", paddingTop: "15px", color:"#F0F0F0", opacity: 0.8}}>
+                            style={{paddingLeft: "15px", paddingTop: "15px", color: "#F0F0F0", opacity: 0.8}}>
                             Support
                         </h2>
                         <div className="row">
@@ -140,7 +139,8 @@ class Support extends React.Component {
                                         </label>
                                         <label className="row">
                                             <input className="col-12 input" type="email" placeholder="Email Address"
-                                                   value={this.state.email} onChange={this.onEmailChange.bind(this)}/>
+                                                   value={this.state.email}
+                                                   onChange={this.onEmailChange.bind(this)}/>
                                         </label>
                                         <label className="row">
                                             <input className="col-12 input" type="text" placeholder="Subject"
@@ -149,7 +149,7 @@ class Support extends React.Component {
                                         </label>
                                         <label className="row">
                                             <textarea className="col-12 input"
-                                                      style={{height: "10em", minHeight: "30px"}}
+                                                      style={{height: "10em", minHeight: "30px", resize: "none"}}
                                                       placeholder="Message"
                                                       value={this.state.message}
                                                       onChange={this.onMessageChange.bind(this)}/>
@@ -157,7 +157,8 @@ class Support extends React.Component {
                                         <label className="row" style={{marginBottom: 0}}>
                                             <div className="col-lg-9 col-md-8"/>
                                             <div className="col-lg-3 col-md-4" style={{paddingRight: 0}}>
-                                                <input id="submit" className="col-12 btn btn-secondary" type="submit"
+                                                <input id="submit" className="col-12 btn btn-secondary"
+                                                       type="submit"
                                                        disabled={!this.state.ready}
                                                        value="Submit"
                                                        onClick={((ev) => {
@@ -201,7 +202,7 @@ class Support extends React.Component {
                         </Modal>
 
                     </div>
-                </div>
+                </MyJumbotron>
             </TemplatePage>
         );
     }
