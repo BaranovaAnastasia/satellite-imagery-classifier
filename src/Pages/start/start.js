@@ -74,7 +74,6 @@ class Start extends React.Component {
                                 </h4>
                             </div>
                         </div>
-
                     </MyJumbotron>
                 </TemplatePage>
             </>

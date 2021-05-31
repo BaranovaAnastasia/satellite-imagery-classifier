@@ -47,8 +47,6 @@ class TemplatePage extends React.Component {
     }
 
     render() {
-        console.log("rendering template")
-
         const sidebar = <SidebarContent
             layers={this.state.layers}
             pages={this.state.pages}

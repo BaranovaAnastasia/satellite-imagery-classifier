@@ -40,7 +40,6 @@ const styles = {
 class SidebarContent extends React.Component {
     constructor(props) {
         super(props);
-        console.log("SidebarContent constructor")
 
         this.style = this.props.style
             ? {...styles.sidebar, ...this.props.style}

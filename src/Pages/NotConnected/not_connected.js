@@ -11,7 +11,7 @@ class NotConnected extends React.Component {
             <TemplatePage
                 layers={OnlyHomeSidebarData}
                 pages={OtherSidebarData}>
-                <div style={{minHeight: "100vh"}}>
+                <div>
                     <MyJumbotron height="100vh">
                         <div className="container">
                             <h3 className="row"
