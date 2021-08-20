@@ -100,7 +100,7 @@ class About extends React.Component {
                                 Higher School of Economics, Moscow, 2021.
                             </div>
                             <br/>
-                            <h5>Performers</h5>
+                            <h5>Executors</h5>
                             <div>
                                 Website developed by Anastasia A. Baranova, BSE196<br/>
                                 Server developed by Dmitriy E. Kalmykov, BSE196<br/>
